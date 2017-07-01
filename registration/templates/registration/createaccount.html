@@ -1,0 +1,15 @@
+{% extends 'Main/header-footer.html' %}
+
+{% block content %}
+
+<div align="center">
+
+    <form method="post" action="">
+        <h1>Your username will be displayed to all users!</h1>
+            {% csrf_token %}
+            {{ form.as_ul}}
+        <h2><input type="submit" value="Create new user account" /></h2>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'main/header-footer.html' %}
+{% block content %}
+
+
+<div class="spacer"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Current Scores</h3>
+            <table id="table1" style="width:75%">
+                <tr id="tr1">
+                    <td id="td1"><p><u>Username</u></p></td>
+                    <td id="td1"><p><u>Score</u></p></td>
+                </tr>
+                {% for score in score %}
+                    <tr id="tr1">
+                        <td id="td1"><p>{{ score.user }}</p></td>
+                        <td id="td1"><p>{{ score.score}}</p></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h3>Julia's Updates</h3>
+            {% for updates in updates %}
+            <div class="background-dark-blue">
+                <h4 class="white">{{updates.date}}</h3>
+            </div>
+                <p>{{updates.content}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

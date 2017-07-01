@@ -1,0 +1,12 @@
+{% extends 'Main/header.html' %}
+
+{% block content %}
+<div align="center">
+    <h1>Complete Your Registration</h1>
+    <p>Only your username will be public, your real name will only be seen by Julia</p>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+    <h2><input type="submit" value="Finish Registration!" /></h2>
+    </form>
+</div>
+{% endblock %}

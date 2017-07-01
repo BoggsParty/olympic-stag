@@ -1,0 +1,14 @@
+{% block content %}
+
+
+<br><p>User Name: {{ user.username }}</p></br>
+<br><p>First Name: {{user.first_name}}</p></br>
+<br><p>Last Name: {{user.last_name}}<p></br>
+
+
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form2.as_p }}
+        <button type="submit" class="save btn btn-default">Click Here To Confirm</button>
+    </form>
+{% endblock %}

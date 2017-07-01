@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'main/header-footer.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <div class="count-down">
+                <div class="clock-builder-output">
+                    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                    <script type="text/javascript" src="static/clock_assets/jquery.countdown.min.js"></script>
+                    <script type="text/javascript">
+                    $(function(){
+                        var d = new Date();
+                        d.setTime(1518174000*1000); // from: 02/09/2018 05:00 am -0600
+                        $('.clock-builder-output').countdown(d, function(event) {
+                            $(this).html(event.strftime('%D days %H:%M:%S'));
+                        });
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spacer"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Current Scores</h3>
+            <table id="table1" style="width:75%">
+                <tr id="tr1">
+                    <td id="td1"><p><u>Username</u></p></td>
+                    <td id="td1"><p><u>Score</u></p></td>
+                </tr>
+                {% for score in score %}
+                    <tr id="tr1">
+                        <td id="td1"><p>{{ score.user }}</p></td>
+                        <td id="td1"><p>{{ score.score}}</p></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h3>Julia's Updates</h3>
+            {% for updates in updates %}
+            <div class="background-dark-blue">
+                <h4 class="white">{{updates.date}}</h3>
+            </div>
+                <p>{{updates.content}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

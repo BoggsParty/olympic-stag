@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% extends 'main/header-footer.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h1>Message Board</h1>
+        </div>
+    </div>
+</div>
+{% if extended_user.forbidden %}
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h2>You have been banned from the message board.</h2>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container-fluid">
+    <div class="row">
+        {% if next_page == 1 %}
+        <div class="col-sm-1 col-sm-offset-11">
+            <a href='/user/message-board/{{next_page}}/' class="arrow-right-image"></a>
+        </div>
+        {% elif final_page < next_page %}
+        <div class="col-sm-1">
+            {% if previous_page == 0 %}
+                <a href="/user/message-board/" class="arrow-left-image"></a>
+            {% else %}
+                <a href="/user/message-board/{{previous_page}}/" class="arrow-left-image"></a>
+            {% endif %}
+        </div>
+        <div class="col-sm-1 col-sm-offset-10">
+            <a href="/user/message-board/" class="arrow-right-image"></a>
+        </div>   
+        {% else %}
+        <div class="col-sm-1">
+            {% if previous_page == 0 %}
+                <a href="/user/message-board/" class="arrow-left-image"></a>
+            {% else %}
+                <a href="/user/message-board/{{previous_page}}/" class="arrow-left-image"></a>
+            {% endif %}
+        </div>
+        <div class="col-sm-1 col-sm-offset-10">
+            <a href="/user/message-board/{{next_page}}/" class="arrow-right-image"></a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="spacer"></div>
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <a href="/user/message-board/comment/">Post a new comment</a>
+    </div>
+</div>
+
+<!--<button type="button" class="btn btn-primary btn-large data-toggle="modal" data-target="#contactModal">Edit Contact</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-7">
+            
+            Create a new message
+        </div>
+    </div>
+</div>-->
+<div class="spacer"></div>
+<div class="container-fluid">
+    {% for messages in messages %}
+    <div class="row">
+        <div class="col-sm-1">
+            <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
+        </div>
+        <div class="col-sm-3 background-dark-blue">
+            <h4 class="white">{{messages.user}}</h4>
+        </div>
+        <div class="col-sm-3 background-dark-blue">
+            <h4 class="white">{{messages.date}}</h4>
+        </div>
+        {% if messages.user = request.user %}
+        <div class="col-sm-1 background-dark-blue">
+            <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-sm-7">
+            <p class="message">{{messages.message}}</p>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-7">
+            <a href="/user/message-board/response/{{messages.pk}}/">Reply</a>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    {% for responses in responses %}
+        {% if responses.response.pk == messages.pk %}
+        <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+                <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
+            </div>
+            <div class="col-sm-3 background-light-blue">
+                <h4 class="white">{{responses.user}}</h4>
+            </div>
+            <div class="col-sm-3 background-light-blue">
+                <h4 class="white">{{responses.date}}</h4>
+            </div>
+            {% if responses.user = request.user %}
+                <div class="col-sm-1 background-light-blue">
+                    <h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-sm-7 col-sm-offset-1">
+                <p class="message">{{responses.message}}</p>
+            </div>
+        </div> 
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        {% if next_page == 1 %}
+        <div class="col-sm-1 col-sm-offset-11">
+            <a href='/user/message-board/{{next_page}}/' class="arrow-right-image"></a>
+            <p class="message">Next</p>
+        </div>
+        {% elif final_page < next_page %}
+        <div class="col-sm-1">
+            {% if previous_page == 0 %}
+                <a href="/user/message-board/" class="arrow-left-image"></a>
+                <p class="message">Previous</p>
+            {% else %}
+                <a href="/user/message-board/{{previous_page}}/" class="arrow-left-image"></a>
+                <p class="message">Previous</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-1 col-sm-offset-10">
+            <a href="/user/message-board/" class="arrow-right-image"></a>
+            <p class="message">Back to Page 1</p>
+        </div>  
+        {% else %}
+        <div class="col-sm-1">
+            {% if previous_page == 0 %}
+                <a href="/user/message-board/" class="arrow-left-image"></a>
+                <p class="message">Back to Page 1</p>
+            {% else %}
+                <a href="/user/message-board/{{previous_page}}/" class="arrow-left-image"></a>
+                <p class="message">Previous</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-1 col-sm-offset-10">
+            <a href="/user/message-board/{{next_page}}/" class="arrow-right-image"></a>
+            <p class="message">Next</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}
