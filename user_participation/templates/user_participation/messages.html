@@ -79,7 +79,7 @@
         <div class="col-sm-3 background-dark-blue">
             <h4 class="white">{{messages.date}}</h4>
         </div>
-        {% if messages.user = request.user %}
+        {% if messages.user == request.user %}
         <div class="col-sm-1 background-dark-blue">
             <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>
         </div>
@@ -108,7 +108,7 @@
             <div class="col-sm-3 background-light-blue">
                 <h4 class="white">{{responses.date}}</h4>
             </div>
-            {% if responses.user = request.user %}
+            {% if responses.user == request.user %}
                 <div class="col-sm-1 background-light-blue">
                     <h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>
                 </div>

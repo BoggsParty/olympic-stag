@@ -28,7 +28,7 @@ def edit_settings(request):
     sports_nav = get_list_or_404(Sport)
     settings = get_object_or_404(Extended_User, user=request.user)
     if request.method == "POST":
-        form = Edit_SettingsForm(request.POST, instance=settings)
+        form = Edit_SettingsForm(request.POST,request.FILES, instance=settings)
         if form.is_valid():
             settings = form.save(commit=False)
             settings.save()
