@@ -144,6 +144,9 @@ p.subscript {
 .spacer {
     height: 25px;
 }
+.spacer-large {
+    height: 100px;
+}
 #table1 {
     border-collapse: collapse;
     width: 100%;
