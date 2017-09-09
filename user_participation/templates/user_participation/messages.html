@@ -71,7 +71,7 @@
     {% for messages in messages %}
     <div class="row">
         <div class="col-sm-1">
-            <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
+            <img class="img-responsive" src="/media/{{messages.user.extended_user.avatar}}">
         </div>
         <div class="col-sm-3 background-dark-blue">
             <h4 class="white">{{messages.user}}</h4>
