@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 class flat_page_admin(SummernoteModelAdmin):
     list_display = ('title',)
-    prepopulated_fields = {"slug": ("title","title",)}
+    prepopulated_fields = {"slug": ("title",)}
     
     
 admin.site.register(Flat_Page,flat_page_admin)
