@@ -100,7 +100,7 @@
         {% if responses.response.pk == messages.pk %}
         <div class="row">
             <div class="col-sm-1 col-sm-offset-1">
-                <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
+                <img class="img-responsive" src="/media/{{messages.user.extended_user.avatar}}">
             </div>
             <div class="col-sm-3 background-light-blue">
                 <h4 class="white">{{responses.user}}</h4>
