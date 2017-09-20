@@ -12,6 +12,10 @@ def about(request):
     return render(request, 'flat_pages/about.html', {'sports_nav':sports_nav,'pages':pages,'about':about,})
 
 @login_required
+def calendar(request):
+    return render(request, 'flat_pages/calendar.html',)
+    
+@login_required
 def flat_page(request, slug):
     content = get_object_or_404(Flat_Page, slug=slug)
     sports_nav = get_list_or_404(Sport)

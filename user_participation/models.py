@@ -5,6 +5,10 @@ class Updates(models.Model):
     date = models.DateField(auto_now=False, auto_now_add=True)
     content = models.TextField(default='')
     
+    class Meta:
+        verbose_name = _("Updates")
+        verbose_name_plural = _("Updates")
+    
 class Comments(models.Model):
     user = models.ForeignKey('auth.User', blank=True)
     date = models.DateField(auto_now=False, auto_now_add=True)
