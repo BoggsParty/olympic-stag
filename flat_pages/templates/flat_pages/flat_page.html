@@ -4,6 +4,15 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row center">
+        <div class="col-sm-12">
+            {% for pages in pages %}
+                <a class="about-link" href="/{{pages.slug}}/">  {{pages.title}}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center">
         <h1>{{content.title}}</h1>
     </div>
     <div class="row">
