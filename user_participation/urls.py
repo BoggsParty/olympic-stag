@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
 url(r'guess/(?P<sport>[\w-]+)', views.guess, name='guess'),
+url(r'guess-confirmation/', views.guess_confirmation, name='guess_confirmation'),
+url(r'guess-page/(?P<sport>[\w-]+)', views.guess_page, name='guess_page'),
 url(r'guesses/all/$', views.all_guess_one_user, name='all_guess_one_user'),
 url(r'guesses/all/(?P<sport>[\w-]+)', views.all_guess_all_users, name='all_guess_all_users'),
 url(r'message-board/$', views.messages_first_page, name='messages-first-page'),

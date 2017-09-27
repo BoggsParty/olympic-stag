@@ -15,13 +15,9 @@
     <div class="container-fluid">
         <div class="row center">
             <div class="col-sm-12">
-                <h3>{{sport_query.sport_name}}</h3>
-                <p class="gray">
-                    <form method="POST" class="post-form">{% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="save btn btn-default">Save</button>
-                    </form>
-                </p>
+                <h3>Your changes have been saved!</h3>
+                <h3>Refresh the previous page to see the changes</h3>
+                <button type="submit" class="save btn btn-default" onclick="self.close()">Close this Window</button>
             </div>
         </div>
     </div>

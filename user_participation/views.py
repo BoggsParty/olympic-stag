@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 #from django.views.generic import UpdateView, ListView
 #from django.http import HttpResponse
 #from django.template.loader import render_to_string
@@ -11,6 +12,7 @@ from user_participation.models import Guesses, Comments, Responses
 import datetime
 
 @login_required
+#pop out window that closes on save
 def guess(request, sport):
     today = datetime.datetime.now()
     now = today.date()
@@ -32,7 +34,7 @@ def guess(request, sport):
                 guess.sport = sport_query
                 guess.save()
                 form.save_m2m()
-                return redirect ('/admin/')
+                return redirect ('/user/guess-confirmation/')
 
         else:
             form = GuessForm(sport=sport, instance=instance)
@@ -46,12 +48,62 @@ def guess(request, sport):
                 guess.sport = sport_query
                 guess.save()
                 form.save_m2m()
-                return redirect ('/admin/')
+                return redirect ('/user/guess-confirmation/')
 
         else:
             form = GuessForm(sport=sport)
     
     return render(request, 'user_participation/guess.html',{'sports_nav':sports_nav,'form':form,'sport_query':sport_query,})
+
+@login_required
+def guess_confirmation (request):
+    sports_nav = get_list_or_404(Sport)
+    return render(request, 'user_participation/guess_thank_you.html',{'sports_nav':sports_nav,})
+
+   
+@login_required
+#full page that redirects back to sport detail
+def guess_page(request, sport):
+    today = datetime.datetime.now()
+    now = today.date()
+    lock_sports = Sport.objects.exclude(locked=True).filter(lock_date__lte=now)
+    lock_sports.update(locked=True)
+    sports_nav = get_list_or_404(Sport)
+    sport_query = Sport.objects.get(slug=sport)
+    try:
+        instance = Guesses.objects.filter(sport=sport_query).get(user=request.user)
+    except:
+        instance = None
+
+    if instance:
+        if request.method == "POST":
+            form = GuessForm(request.POST, sport=sport, instance=instance)
+            if form.is_valid():
+                guess = form.save(commit=False)
+                guess.user = request.user
+                guess.sport = sport_query
+                guess.save()
+                form.save_m2m()
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+        else:
+            form = GuessForm(sport=sport, instance=instance)
+            
+    else:
+        if request.method == "POST":
+            form = GuessForm(request.POST, sport=sport)
+            if form.is_valid():
+                guess = form.save(commit=False)
+                guess.user = request.user
+                guess.sport = sport_query
+                guess.save()
+                form.save_m2m()
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+        else:
+            form = GuessForm(sport=sport)
+    
+    return render(request, 'user_participation/guess_new_page.html',{'sports_nav':sports_nav,'form':form,'sport_query':sport_query,})
 
 @login_required    
 def all_guess_one_user(request):
