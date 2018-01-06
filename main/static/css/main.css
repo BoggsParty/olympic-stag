@@ -32,7 +32,7 @@ a.header-link {
 a.about-link {
     text-align: center;
     font-size:300%;
-    text-decoration: underline;
+    text-decoration: none;
     color:#7c9eb2;
     
 }
