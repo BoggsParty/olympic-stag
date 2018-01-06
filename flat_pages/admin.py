@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Flat_Page
 from django_summernote.admin import SummernoteModelAdmin
 
-class flat_page_admin(SummernoteModelAdmin):
+class flat_page_admin(admin.ModelAdmin):
     list_display = ('title',)
     prepopulated_fields = {"slug": ("title",)}
     

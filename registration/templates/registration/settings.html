@@ -19,24 +19,19 @@
         {{ form.email }}
         <p> </p>
         <!--<p>Receive email notifications? {{ form.notifications }} yes</p> -->
-        
-        <p>{{ form.avatar }}</p>
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-</div>
-
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
         <h3>Current Picture:</h3>
             <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
         </div>
     </div>
 </div>
-<p> </p>
-
-
-
+        <h3>Change your picture:</h3>
+        <p>{{ form.avatar }}</p>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>
 
 {% endblock %}

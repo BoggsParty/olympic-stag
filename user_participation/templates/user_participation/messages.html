@@ -53,7 +53,8 @@
 <div class="spacer"></div>
 <div class="container-fluid">
     <div class="col-sm-12">
-        <a href="/user/message-board/comment/">Post a new comment</a>
+        <a href="#" onclick="window.open('/user/message-board/comment/', 'newwindow', 'width=300, height=400'); return false;">Post a new comment</a>
+        <!--<a href="/user/message-board/comment/">Post a new comment</a>-->
     </div>
 </div>
 
@@ -70,7 +71,7 @@
 <div class="container-fluid">
     {% for messages in messages %}
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <img class="img-responsive" src="/media/{{messages.user.extended_user.avatar}}">
         </div>
         <div class="col-sm-3 background-dark-blue">
@@ -81,7 +82,8 @@
         </div>
         {% if messages.user == request.user %}
         <div class="col-sm-1 background-dark-blue">
-            <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>
+            <h4 class="white"><a href="#" onclick="window.open('/user/message-board/comment/edit/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>
+           <!-- <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>-->
         </div>
         {% endif %}
     </div>
@@ -92,15 +94,16 @@
     </div>  
     <div class="row">
         <div class="col-sm-7">
-            <a href="/user/message-board/response/{{messages.pk}}/">Reply</a>
+            <a href="#" onclick="window.open('/user/message-board/response/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Reply</a>
+            <!--<a href="/user/message-board/response/{{messages.pk}}/">Reply</a>-->
         </div>
     </div>
     <div class="spacer"></div>
     {% for responses in responses %}
         {% if responses.response.pk == messages.pk %}
         <div class="row">
-            <div class="col-sm-1 col-sm-offset-1">
-                <img class="img-responsive" src="/media/{{messages.user.extended_user.avatar}}">
+            <div class="col-sm-2 col-sm-offset-1">
+                <img class="img-responsive" src="/media/{{responses.user.extended_user.avatar}}">
             </div>
             <div class="col-sm-3 background-light-blue">
                 <h4 class="white">{{responses.user}}</h4>
@@ -110,7 +113,8 @@
             </div>
             {% if responses.user == request.user %}
                 <div class="col-sm-1 background-light-blue">
-                    <h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>
+                    <h4 class="white"><a href="#" onclick="window.open('/user/message-board/response/edit/{{responses.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>
+                    <!--<h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>-->
                 </div>
             {% endif %}
         </div>

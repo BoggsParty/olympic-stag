@@ -163,6 +163,17 @@ p.subscript {
 }
 
 #tr1:hover{background-color:#f5f5f5}
+
+/*Calendar CSS*/
+.calendar {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #7c9eb2;
+}
+.calendar-date{
+    color: red;
+}
+
 /* Start of Menu CSS */
 
 li.menu {

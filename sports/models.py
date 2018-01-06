@@ -14,6 +14,7 @@ class Sport(models.Model):
     sport_name = models.CharField(max_length=200, default='')
     slug = models.SlugField(max_length=50, default='')
     lock_date = models.DateField(auto_now=False, auto_now_add=False)
+    award_date = models.DateField(auto_now=False, auto_now_add=False)
     locked = models.BooleanField(default=False)
     
     sport_description = models.TextField(default='Sport Description')
