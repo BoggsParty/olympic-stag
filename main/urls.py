@@ -7,6 +7,7 @@ urlpatterns = [
 url(r'^$', views.main, name='main'),
 url(r'^log-out/$', views.log_out, name='log-out'),
 url(r'^user/settings/$', views.edit_settings, name='edit-settings'),
+url(r'^password-reset/$', views.password_reset, name='password-reset'),
 url('^create-account/', CreateView.as_view(
         template_name='registration/createaccount.html',
         form_class=UserCreationForm,

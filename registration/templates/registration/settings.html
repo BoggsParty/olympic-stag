@@ -9,17 +9,32 @@
     </div>
 </div>
 <div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <p>If you do not provide a real name or a valid email address, you may not receive your prize!<p>
+            <p>Your email address can be used to help recover your account.</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
     <div class="row">
         <div class="col-sm-12">
-            <h3>Current Email:</h3>
+            <h3>Name:</h3>
+            <h4>{{settings.first_name}} {{settings.last_name}}</h4>
+        </div>
+    </div>
+        <p>First Name:{{form.first_name}}</p>
+        <p>Last Name:{{form.last_name}}</p>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Current Email (Optional):</h3>
             <h4>{{settings.email}}</h4>
         </div>
     </div>
-    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
         {{ form.email }}
-        <p> </p>
-        <!--<p>Receive email notifications? {{ form.notifications }} yes</p> -->
-
+        <p>Receive email notifications for future Olympics? {{ form.notifications }} yes</p>
+        
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">

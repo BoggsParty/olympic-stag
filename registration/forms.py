@@ -7,5 +7,5 @@ class Edit_SettingsForm(forms.ModelForm):
 
     class Meta:
         model = Extended_User
-        fields = ("notifications","avatar","email",)
+        fields = ("notifications","first_name","last_name","avatar","email",)
 

@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Extended_User(models.Model):
     user = models.OneToOneField('auth.User')
+    first_name = models.CharField(default='', max_length=200)
+    last_name = models.CharField(default='', max_length=200)
     avatar = models.ImageField(upload_to='avatars', blank=True)
     score = models.IntegerField(default='0')
     forbidden = models.BooleanField(default=False)

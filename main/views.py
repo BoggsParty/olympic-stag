@@ -37,6 +37,9 @@ def edit_settings(request):
         form = Edit_SettingsForm(instance=settings)
     return render(request, 'registration/settings.html', {'sports_nav':sports_nav,'form':form,'settings':settings})
 
+def password_reset(request):
+    return render(request, 'registration/password-reset.html',)
+    
 def log_out (request):
     logout(request)
     return redirect('main')
