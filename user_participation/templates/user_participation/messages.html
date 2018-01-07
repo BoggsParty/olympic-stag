@@ -53,8 +53,8 @@
 <div class="spacer"></div>
 <div class="container-fluid">
     <div class="col-sm-12">
-        <a href="#" onclick="window.open('/user/message-board/comment/', 'newwindow', 'width=300, height=400'); return false;">Post a new comment</a>
-        <!--<a href="/user/message-board/comment/">Post a new comment</a>-->
+        <!--<a href="#" onclick="window.open('/user/message-board/comment/', 'newwindow', 'width=300, height=400'); return false;">Post a new comment</a>-->
+        <a href="/user/message-board/comment/">Post a new comment</a>
     </div>
 </div>
 
@@ -82,8 +82,8 @@
         </div>
         {% if messages.user == request.user %}
         <div class="col-sm-1 background-dark-blue">
-            <h4 class="white"><a href="#" onclick="window.open('/user/message-board/comment/edit/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>
-           <!-- <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>-->
+            <!--<h4 class="white"><a href="#" onclick="window.open('/user/message-board/comment/edit/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>-->
+           <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>
         </div>
         {% endif %}
     </div>
@@ -94,8 +94,8 @@
     </div>  
     <div class="row">
         <div class="col-sm-7">
-            <a href="#" onclick="window.open('/user/message-board/response/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Reply</a>
-            <!--<a href="/user/message-board/response/{{messages.pk}}/">Reply</a>-->
+            <!--<a href="#" onclick="window.open('/user/message-board/response/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Reply</a>-->
+            <a href="/user/message-board/response/{{messages.pk}}/">Reply</a>
         </div>
     </div>
     <div class="spacer"></div>
@@ -113,8 +113,8 @@
             </div>
             {% if responses.user == request.user %}
                 <div class="col-sm-1 background-light-blue">
-                    <h4 class="white"><a href="#" onclick="window.open('/user/message-board/response/edit/{{responses.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>
-                    <!--<h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>-->
+                    <!--<h4 class="white"><a href="#" onclick="window.open('/user/message-board/response/edit/{{responses.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Edit</a></h4>-->
+                    <h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>
                 </div>
             {% endif %}
         </div>
