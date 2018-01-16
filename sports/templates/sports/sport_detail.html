@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <p>{{sport.sport_description}}</p>
+            <p>{{sport.sport_description | safe}}</p>
         </div>
         <div class="col-sm-6">
             {% for images in images %}
@@ -31,13 +31,13 @@
     <div class="row">
         <div class="col-sm-12">
             <h2 class="header">How do they choose the winner?</h2>
-            <p>{{sport.scoring}}</p>
+            <p>{{sport.scoring | safe}}</p>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <h2 class="header">Who is going to win?</h2>
-            <p>{{sport.favorite}}</p>
+            <p>{{sport.favorite | safe}}</p>
             <p>Click <a href="{{sport.rankings_url}}">here</a> to view the official rankings.</p>
         </div>
     </div>

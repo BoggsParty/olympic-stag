@@ -32,11 +32,24 @@ def edit_settings(request):
         if form.is_valid():
             settings = form.save(commit=False)
             settings.save()
-            return redirect('edit-settings')
+            return redirect('edit-settings-saved')
     else:
         form = Edit_SettingsForm(instance=settings)
     return render(request, 'registration/settings.html', {'sports_nav':sports_nav,'form':form,'settings':settings})
 
+def edit_settings_saved(request):
+    sports_nav = get_list_or_404(Sport)
+    settings = get_object_or_404(Extended_User, user=request.user)
+    if request.method == "POST":
+        form = Edit_SettingsForm(request.POST,request.FILES, instance=settings)
+        if form.is_valid():
+            settings = form.save(commit=False)
+            settings.save()
+            return redirect('edit-settings-saved')
+    else:
+        form = Edit_SettingsForm(instance=settings)
+    return render(request, 'registration/settings-saved.html', {'sports_nav':sports_nav,'form':form,'settings':settings})
+    
 def password_reset(request):
     return render(request, 'registration/password-reset.html',)
     
