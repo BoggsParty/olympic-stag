@@ -1,4 +1,5 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import Comments, Responses, Commenting_On, Guesses, Updates
 
 class Updates_admin(admin.ModelAdmin):
@@ -21,7 +22,7 @@ class Commenting_On_admin(admin.ModelAdmin):
     
 admin.site.register(Commenting_On,Commenting_On_admin)
 
-class Guesses_admin(admin.ModelAdmin):
+class Guesses_admin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display = ('user','sport','date',)
     order = ('date')
     filter_by = ('sport','user')
