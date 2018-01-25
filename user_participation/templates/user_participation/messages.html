@@ -14,11 +14,12 @@
 <div class="container-fluid">
     <div class="row center">
         <div class="col-sm-12">
-            <h2>You have been banned from the message board.</h2>
+            <h2>BANNED! You have been banned from the message board.</h2>
         </div>
     </div>
 </div>
-{% else %}
+
+{% elif comments_allowed.active %}
 <div class="container-fluid">
     <div class="row">
         {% if next_page == 1 %}
@@ -164,6 +165,15 @@
             <p class="message">Next</p>
         </div>
         {% endif %}
+    </div>
+</div>
+
+{% else %}
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h2>BANNED! You have all been banned from the message board.</h2>
+        </div>
     </div>
 </div>
 {% endif %}

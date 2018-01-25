@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from .forms import GuessForm, NewCommentForm, NewResponseForm
 from sports.models import Sport, Winner
 from registration.models import Extended_User
-from user_participation.models import Guesses, Comments, Responses
+from user_participation.models import Guesses, Comments, Responses, Commenting_On
 import datetime
 
 @login_required
@@ -142,6 +142,7 @@ def messages_first_page(request):
 def messages(request, num):
     sports_nav = get_list_or_404(Sport)
     extended_user = Extended_User.objects.get(user=request.user)
+    comments_allowed = Commenting_On.object.get(pk=1)
     num = int(num)
     number_10 = num+10
     next_page = num+1
@@ -156,7 +157,7 @@ def messages(request, num):
         q_end = q_start+10
         messages = Comments.objects.all().order_by('-id')[q_start:q_end]
     responses = Responses.objects.all()
-    return render (request, 'user_participation/messages.html', {'sports_nav':sports_nav,'messages':messages,'responses':responses,'next_page':next_page,'previous_page':previous_page,'final_page':final_page,'extended_user':extended_user,})
+    return render (request, 'user_participation/messages.html', {'sports_nav':sports_nav,'messages':messages,'responses':responses,'next_page':next_page,'previous_page':previous_page,'final_page':final_page,'extended_user':extended_user,'comments_allowed':comments_allowed})
 
 @login_required   
 def new_comment(request):
