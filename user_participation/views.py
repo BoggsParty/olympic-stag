@@ -142,7 +142,7 @@ def messages_first_page(request):
 def messages(request, num):
     sports_nav = get_list_or_404(Sport)
     extended_user = Extended_User.objects.get(user=request.user)
-    comments_allowed = Commenting_On.object.get(pk=1)
+    comments_allowed = get_object_or_404(Commenting_On, pk=1)
     num = int(num)
     number_10 = num+10
     next_page = num+1

@@ -16,9 +16,12 @@ def main(request):
     score = get_list_or_404(Extended_User)
     updates = Updates.objects.all().order_by('-id')[0:5]
     now = datetime.datetime.now()
-    if now.year < 2018:
+    #if now.year < 2018:
+       # return render(request, 'main/main-with-countdown.html',{'sports_nav':sports_nav,'score':score,'updates':updates,})
+    #if now.year == 2018 and now.month <=2 and now.day <=10:
+    if now.year == 2018 and now.month == 1:
         return render(request, 'main/main-with-countdown.html',{'sports_nav':sports_nav,'score':score,'updates':updates,})
-    elif now.year <= 2018 and now.month <=2 and now.day <=10:
+    elif now.year == 2018 and now.month ==2 and now.day <10:    
         return render(request, 'main/main-with-countdown.html',{'sports_nav':sports_nav,'score':score,'updates':updates,})
     else:
         return render(request, 'main/main.html',{'sports_nav':sports_nav,'score':score,'updates':updates,})
