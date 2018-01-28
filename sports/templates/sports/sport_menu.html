@@ -2,6 +2,7 @@
 {% extends 'main/header-footer.html' %}
 
 {% block content %}
+<!-- WHEN I HAVE THE PICTURES
 <div class="container-fluid">
     <div class="row center">
         <h1>All Sports</h1>
@@ -12,7 +13,23 @@
         {% for sport in sport %}
         <div class="col-sm-3">
             <a href="/sports/detail/{{sport.slug}}"><img class="img-responsive center" src="/media/{{sport.menu_image}}"></a>
-            <h3><a href="/sports/detail/{{sport.slug}}">{{sport.sport_name}}</a></h3>
+            <h3><a class="red" href="/sports/detail/{{sport.slug}}">{{sport.sport_name}}</a></h3>
+            {% if sport.locked %}
+                <a href="/user/guesses/all/{{sport.slug}}">Click here to view all user's guesses</a>
+            {% else %}
+                <a href="#" onclick="window.open('/user/guess/{{sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>-->
+
+
+<div class="container-fluid">
+    <div class="row center display-flex">
+        {% for sport in sport %}
+        <div class="col-sm-3 calendar">
+            <h3><a class="red" href="/sports/detail/{{sport.slug}}">{{sport.sport_name}}</a></h3>
             {% if sport.locked %}
                 <a href="/user/guesses/all/{{sport.slug}}">Click here to view all user's guesses</a>
             {% else %}

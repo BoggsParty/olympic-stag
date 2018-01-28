@@ -39,7 +39,9 @@ a.about-link {
 a.white {
     color: white;
 }
-
+a.red {
+    color: #984447;
+}
 .arrow-right-image{
     margin-bottom: 10px;
     height: 50px;
