@@ -19,7 +19,9 @@
     </div>
 </div>
 
-{% else %}
+
+
+{% elif comments_allowed.active %}
 <div class="container-fluid">
     <div class="row">
         {% if next_page == 1 %}
@@ -87,12 +89,11 @@
            <h4 class="white"><a href="/user/message-board/comment/edit/{{messages.pk}}/" class="white">Edit</a></h4>
         </div>
         {% endif %}
-    </div>
-    <div class="row">
         <div class="col-sm-7">
             <p class="message">{{messages.message}}</p>
         </div>
-    </div>  
+    </div>
+
     <div class="row">
         <div class="col-sm-7">
             <!--<a href="#" onclick="window.open('/user/message-board/response/{{messages.pk}}/', 'newwindow', 'width=300, height=400'); return false;">Reply</a>-->
@@ -118,12 +119,14 @@
                     <h4 class="white"><a href="/user/message-board/response/edit/{{responses.pk}}/" class="white">Edit</a></h4>
                 </div>
             {% endif %}
-        </div>
-        <div class="row">
-            <div class="col-sm-7 col-sm-offset-1">
-                <p class="message">{{responses.message}}</p>
+            <div class="row">
+                <div class="col-sm-7">
+                    <p class="message">{{responses.message}}</p>
+                </div>
             </div>
-        </div> 
+            <div class="row"><br></div>
+        </div>
+ 
         {% endif %}
     {% endfor %}
 {% endfor %}
@@ -165,6 +168,12 @@
             <p class="message">Next</p>
         </div>
         {% endif %}
+    </div>
+</div>
+{% else %}
+<div class="container-fluid">
+    <div class="row center">
+        <h1>BANNED!!! You have all been banned!</h1>
     </div>
 </div>
 

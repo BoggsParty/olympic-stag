@@ -132,11 +132,12 @@ def all_guess_all_users(request, sport):
 @login_required
 def messages_first_page(request):
     sports_nav = get_list_or_404(Sport)
+    comments_allowed = get_object_or_404(Commenting_On, pk=1)
     extended_user = Extended_User.objects.get(user=request.user)
     messages = Comments.objects.all().order_by('-id')[:10]
     responses = Responses.objects.all()
     next_page = 1
-    return render (request, 'user_participation/messages.html',{'sports_nav':sports_nav,'messages':messages,'responses':responses,'next_page':next_page, 'extended_user':extended_user,})
+    return render (request, 'user_participation/messages.html',{'sports_nav':sports_nav,'messages':messages,'responses':responses,'next_page':next_page, 'extended_user':extended_user,'comments_allowed':comments_allowed,})
 
 @login_required
 def messages(request, num):
