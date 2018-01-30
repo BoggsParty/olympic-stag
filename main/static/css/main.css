@@ -89,22 +89,22 @@ a.red {
 }
 
 h1 {
-    font-size: 350%;
+    font-size: 300%;
     color: #984447;
 }
 h2 {
-    font-size: 275%;
+    font-size: 250%;
 }
 h3 {
-    font-size: 250%;
+    font-size: 200%;
     color: #984447;
 }
 h3.black {
-    font-size: 250%;
+    font-size: 200%;
     color: black;
 }
 h3.gray {
-    font-size: 250%;
+    font-size: 200%;
     color: #667375;
 }
 h4.white {
@@ -137,7 +137,7 @@ p.message {
     border-width: 3px;
 }  
 p {
-    font-size: 100%;
+    font-size: 125%;
     color: #667375;
 }
 p.subscript {
