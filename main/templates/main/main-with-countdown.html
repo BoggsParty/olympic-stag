@@ -47,7 +47,7 @@
             <div class="background-dark-blue">
                 <h4 class="white">{{updates.date}}</h3>
             </div>
-                <p>{{updates.content}}</p>
+                <p>{{updates.content | safe}}</p>
             {% endfor %}
         </div>
     </div>
