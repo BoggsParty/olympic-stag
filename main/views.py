@@ -13,7 +13,7 @@ import datetime
 @login_required
 def main(request):
     sports_nav = get_list_or_404(Sport)
-    score = get_list_or_404(Extended_User)
+    score = Extended_User.objects.all().order_by('-score')
     updates = Updates.objects.all().order_by('-id')[0:5]
     now = datetime.datetime.now()
     #if now.year < 2018:
