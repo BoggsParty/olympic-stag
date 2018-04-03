@@ -11,6 +11,7 @@ class Country(models.Model):
         return self.abbreviation
 
 class Sport(models.Model):
+    active = models.BooleanField(default=False)
     sport_name = models.CharField(max_length=200, default='')
     slug = models.SlugField(max_length=50, default='')
     lock_date = models.DateField(auto_now=False, auto_now_add=False)

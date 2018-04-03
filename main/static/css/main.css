@@ -87,7 +87,10 @@ a.red {
 .count-down {
     font-size:300%;
 }
-
+.count-down-big {
+    font-size:1000%;
+   
+}
 h1 {
     font-size: 300%;
     color: #984447;

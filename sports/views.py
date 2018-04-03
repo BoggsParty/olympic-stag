@@ -11,9 +11,9 @@ def sport_menu(request):
     now = today.date()
     lock_sports = Sport.objects.exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
-    sport = get_list_or_404(Sport)
-    sports_nav = get_list_or_404(Sport)
-    return render(request, 'sports/sport_menu.html',{'sport':sport,'sports_nav':sports_nav,})
+    sport = get_list_or_404(Sport, active=True)
+    #sports_nav = get_list_or_404(Sport)
+    return render(request, 'sports/sport_menu.html',{'sport':sport,})
 
 @login_required
 def sport_detail(request, sport):
@@ -23,7 +23,7 @@ def sport_detail(request, sport):
     lock_sports.update(locked=True)
     sport = get_object_or_404(Sport, slug=sport)
     images = get_list_or_404(Sport_Images, sport=sport)
-    sports_nav = get_list_or_404(Sport)
+    #sports_nav = get_list_or_404(Sport)
     
     completed = True
     try:

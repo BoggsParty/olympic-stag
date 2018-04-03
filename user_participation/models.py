@@ -8,7 +8,11 @@ class Updates(models.Model):
     class Meta:
         verbose_name = _("Updates")
         verbose_name_plural = _("Updates")
-    
+
+class Scores(models.Model):
+    user = models.ForeignKey('auth.User', blank=True)
+    score = models.IntegerField(default = 0)
+        
 class Comments(models.Model):
     user = models.ForeignKey('auth.User', blank=True)
     date = models.DateField(auto_now=False, auto_now_add=True)

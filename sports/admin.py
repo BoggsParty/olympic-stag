@@ -40,6 +40,7 @@ class WinnerResource(resources.ModelResource):
 
 class winner_admin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('sport',)
+    filter_horizontal = ('gold','silver','bronze',)
 
 admin.site.register(Winner,winner_admin)
 '''
